@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/css/style.css">
     <title>Weather App</title>
 </head>
+
 <body>
-    
+
+    <div class="container">
+        <div class="layer_bg"></div>
+        <div class="wrapper">
+            <form>
+                <input type="text" class="search" placeholder="Enter country or city name...">
+                <button class="search_btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="#fff">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                </button>
+            </form>
+            <div class="country_date_infos">
+                <h2 class="country_name">Iran<span>,</span> <span>IR</span> </h2>
+                <p class="date_text">Monday 16 March 2025</p>
+            </div>
+            <h1 class="temperature">21°C</h1>
+            <div>
+                <h3 class="status_air">Sanny</h3>
+                <p class="high_low">21°C / 12°C</p>
+            </div>
+        </div>
+    </div>
+
     <script src="./src/js/index.js"></script>
 </body>
+
 </html>
