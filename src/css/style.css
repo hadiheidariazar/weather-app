@@ -14,7 +14,10 @@ body {
     color: #fff;
 }
 
-p, h1, h2, h3 {
+p,
+h1,
+h2,
+h3 {
     text-align: center;
 }
 
@@ -77,9 +80,13 @@ form {
     padding: 14px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
-    cursor: pointer;
     border: none;
+    cursor: pointer;
     background-color: var(--primary);
+}
+
+.cursor-default {
+    cursor: default;
 }
 
 .search_btn:hover {
@@ -92,7 +99,7 @@ form {
     height: 25px;
 }
 
-.country_name {
+.country_city_name {
     font-size: 32px;
 }
 
@@ -103,7 +110,7 @@ form {
 }
 
 .temperature {
-    font-size: 65px;
+    font-size: 75px;
 }
 
 .status_air {
@@ -116,15 +123,39 @@ form {
     font-size: 23px;
 }
 
+.loader {
+    width: 25px;
+    height: 25px;
+    border: 3px solid #fff;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.swal-footer, .swal-text {
+    text-align: center;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 
 @media screen and (max-width: 600px) {
     .container {
         align-items: start;
     }
-
     .wrapper {
         width: 25rem;
-        margin-top: 100px;
+        margin-top: 40px;
     }
 
     .search {
