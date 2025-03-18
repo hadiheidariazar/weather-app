@@ -1,0 +1,3 @@
+Question: How do I get an API key?
+
+Answer: To get an API key, first register at openweathermap.org, and after registering, click on your profile, and then click on the My API keys option

@@ -4,7 +4,7 @@ const fullDate = new Date()
 const mainDate = `${days[fullDate.getDay()]} ${fullDate.getDate()} ${months[fullDate.getMonth()]} ${fullDate.getFullYear()}`
 const apiData = {
     url: 'https://api.openweathermap.org/data/2.5/weather?q=',
-    key: 'f9df4a408bb2c23af21fe128b90cfaf4'
+    key: 'Your Api Key' // Please read the Your-Api-Key.txt file :)
 }
 
 $(function () {
