@@ -12,47 +12,48 @@ $(function () {
 
     $('form').on('submit', function (event) {
         const inputSearchVal = $('.search').val().trim()
-        event.preventDefault()
+        event.preventDefault();
 
         if (inputSearchVal.length) {
             disabledSearch()
 
             $.ajax({
                 type: "GET",
-                url: `${apiData.url}${inputSearchVal}&appid=${apiData.key}`,
+                url: `${apiData.url}${inputSearchVal}&appid=${apiData.key}&units=metric`,
                 dataType: "json",
                 success: successGetData,
                 error: errorGetData,
                 complete: enabledSearch
             });
         }
+        return false
     })
 })
 
 function successGetData(result) {
     $('.country_city_name').html(`${result.name}<span>, ${result.sys.country}</span>`)
     $('.status_air').text(result.weather[0].main)
-    $('.temperature').text(`${Math.round(result.main.temp - 272.15)}°C`)
-    $('.high_low').text(`${Math.round(result.main.temp_max - 272.15)}°C / ${Math.round(result.main.temp_min - 272.15)}°C`)
+    $('.temperature').text(`${temp(result.main.temp)}°C`)
+    $('.high_low').text(`${temp(result.main.temp_max)}°C / ${temp(result.main.temp_min)}°C`)
 }
 
 function errorGetData(error) {
-    (error.statusText === 'error' && error.status === 0) ? swal({
-        text: 'Please check your internet :|',
+    const errorMessage = (error.status === 0) 
+        ? 'Please check your internet connection' 
+        : 'Invalid country or city name';
+    
+    swal({
         icon: 'error',
-        button: 'Got it!'
-    }) : swal({
-        text: 'The entered country or city name is invalid :|',
-        icon: 'error',
-        button: 'Got it!'
-    })
+        text: errorMessage,
+        button: 'Try Again'
+    });
 }
 
 function disabledSearch() {
-    $('.search').attr('disabled', 'yes')
+    $('.search').attr('disabled', true)
     $('.search_btn').html('<span class="loader"></span>')
     $('.search_btn').addClass('cursor-default')
-    $('.search_btn').attr('disabled', 'yes')
+    $('.search_btn').attr('disabled', true)
 }
 
 function enabledSearch() {
@@ -65,4 +66,8 @@ function enabledSearch() {
                     </svg>`)
     $('.search_btn').removeClass('cursor-default')
     $('.search_btn').removeAttr('disabled')
+}
+
+function temp(tempVal) {
+    return tempVal.toFixed(1).split('.')[1] === '0' ? Math.floor(tempVal) : tempVal.toFixed(1)
 }
